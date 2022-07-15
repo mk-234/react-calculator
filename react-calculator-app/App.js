@@ -54,23 +54,8 @@ const OperatorButton = (props) => {
     if(props.getNumbers != ""){
       if(props.operatorText == "X" ||props.operatorText == "+" ||props.operatorText == "-" ||props.operatorText == "/" ||props.operatorText == "=" ){
         numberOperation = calc(props.getStatement + ' ' + props.getNumbers).toString();
-        if(numberOperation.length >= 12 && (numberOperation.toString().match(/e\-/g) || []).length >= 1){
-          var numberExponent = numberOperation.substring(numberOperation.lastIndexOf('e'));
-          if(numberExponent.length <= 4){
-            numberOperation = numberOperation.split('e')[0].substring(0, 7) + numberExponent;
-          } else {
-            numberOperation = 0;
-          }
-        } else if(numberOperation.length >= 12 && !((numberOperation.toString().match(/\./g) || []).length >= 1)){
-          numberOperation = Number(numberOperation).toExponential();
-          numberOperation = numberOperation.toString();
-          var numberExponent = numberOperation.substring(numberOperation.lastIndexOf('e'));
-          if(numberExponent.length <= 4){
-            numberOperation = numberOperation.substring(0, 7) + numberExponent;
-          } else {
-            numberOperation = 0;
-          }
-        }else if((numberOperation.toString().match(/e\+/g) || []).length >= 1){
+        if((numberOperation.length >= 12 && (numberOperation.toString().match(/e/g) || []).length >= 1) || (numberOperation.length >= 12 && !((numberOperation.toString().match(/\./g) || []).length >= 1))){
+        //if((numberOperation.length >= 12 && (numberOperation.toString().match(/e/g) || []).length >= 1) || (numberOperation.length >= 12 && !((numberOperation.toString().match(/\./g) || []).length >= 1))){
           numberOperation = Number(numberOperation).toExponential();
           numberOperation = numberOperation.toString();
           var numberExponent = numberOperation.substring(numberOperation.lastIndexOf('e'));
@@ -232,3 +217,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   }
 });
+
