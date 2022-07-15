@@ -1,1 +1,1 @@
-# react-calculator
+The calculator, written using React, has an 11 character memory limit including the decimal separator and the exponent. Calculations will be run within those limits. A significant portion of the code is devoted to converting the numbers into an exponential form only when needed and setting limits to how both the numbers and the exponent are displayed. The calculator hasn't been fully tested for bugs so I don't recommend using it for anything serious.
